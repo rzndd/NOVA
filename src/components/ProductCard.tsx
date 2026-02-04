@@ -12,7 +12,7 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const { dispatch } = useCart();
+  const { addItem } = useCart();
 
   const discountPercent = product.discountPercent || 
     (product.originalPrice ? Math.round((1 - product.price / product.originalPrice) * 100) : 0);
@@ -20,15 +20,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const handleQuickBuy = (e: React.MouseEvent, size: string) => {
     e.preventDefault();
     e.stopPropagation();
-    dispatch({
-      type: 'ADD_ITEM',
-      payload: {
-        product,
-        quantity: 1,
-        size: size as 'PP' | 'P' | 'M' | 'G' | 'GG',
-        color: product.colors[0],
-      },
-    });
+    addItem(product, size as 'PP' | 'P' | 'M' | 'G' | 'GG', product.colors[0]);
   };
 
   return (
