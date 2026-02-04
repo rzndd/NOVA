@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-ivory text-onyx font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-light;
+  }
+
+  ::selection {
+    @apply bg-champagne/30 text-onyx;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center px-8 py-3 text-sm font-medium tracking-wider uppercase transition-all duration-300 ease-out;
+  }
+
+  .btn-primary {
+    @apply btn bg-onyx text-ivory hover:bg-graphite;
+  }
+
+  .btn-secondary {
+    @apply btn border border-onyx text-onyx hover:bg-onyx hover:text-ivory;
+  }
+
+  .btn-champagne {
+    @apply btn bg-champagne text-onyx hover:bg-champagne/90;
+  }
+
+  /* Links */
+  .nav-link {
+    @apply relative text-sm tracking-widest uppercase font-medium transition-colors duration-200;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute left-0 bottom-0 w-0 h-px bg-current transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Cards */
+  .product-card {
+    @apply relative overflow-hidden bg-white;
+  }
+
+  .product-card-image {
+    @apply relative aspect-[3/4] overflow-hidden;
+  }
+
+  .product-card-image img {
+    @apply w-full h-full object-cover transition-transform duration-700 ease-out;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full px-4 py-3 bg-transparent border border-cloud focus:border-onyx outline-none transition-colors duration-200 text-sm;
+  }
+
+  .input-dark {
+    @apply input border-graphite/30 text-ivory placeholder:text-graphite focus:border-ivory;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-accent uppercase tracking-wider;
+  }
+
+  .badge-new {
+    @apply badge bg-onyx text-ivory;
+  }
+
+  .badge-sale {
+    @apply badge bg-champagne text-onyx;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section */
+  .section {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  /* Grid */
+  .product-grid {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
